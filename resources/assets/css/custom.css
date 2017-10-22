@@ -2,3 +2,7 @@
   width: 480px; 
   margin: 90px auto 0 auto;
 }
+
+.box .box-header a {
+    color: #fff; 
+}

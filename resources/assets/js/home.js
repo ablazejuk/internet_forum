@@ -3,5 +3,5 @@ $(document).ready(function() {
         return;
     }
     
-    $('#example1').dataTable();
+    $('#threads-table').dataTable();
 });

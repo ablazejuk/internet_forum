@@ -16,6 +16,7 @@ mix.combine([
     'resources/assets/theme/adminlte/AdminLTE/css/font-awesome.min.css',
     'resources/assets/theme/adminlte/AdminLTE/css/ionicons.min.css',
     'resources/assets/theme/adminlte/AdminLTE/css/datatables/dataTables.bootstrap.css',
+    'resources/assets/theme/adminlte/AdminLTE/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
     'resources/assets/theme/adminlte/AdminLTE/css/AdminLTE.css',
     'resources/assets/css/kaushan_script.css',
     'resources/assets/css/source_sans_pro.css',
@@ -28,8 +29,10 @@ mix.combine([
     'resources/assets/theme/adminlte/AdminLTE/js/bootstrap.min.js',
     'resources/assets/theme/adminlte/AdminLTE/js/plugins/datatables/jquery.dataTables.js',
     'resources/assets/theme/adminlte/AdminLTE/js/plugins/datatables/dataTables.bootstrap.js',
+    'resources/assets/theme/adminlte/AdminLTE/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js',
     'resources/assets/theme/adminlte/AdminLTE/js/AdminLTE/app.js',
-    'resources/assets/js/home.js'
+    'resources/assets/js/home.js',
+    'resources/assets/js/threads.js'
 ], 'public/js/app.js');
 
 // Images
