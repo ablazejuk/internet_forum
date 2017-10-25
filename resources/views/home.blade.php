@@ -41,7 +41,7 @@
                             <tbody>
                                 @foreach($threads as $thread)
                                 <tr>
-                                    <td><a href="{{ url('test') }}">{{ $thread->title }}</a></td>
+                                    <td><a href="{{ url('threads/view/' . $thread->id) }}">{{ $thread->title }}</a></td>
                                     <td>{{ $thread->user->name }}</td>
                                     <td>Win 95+</td>
                                     <td>Win 95+</td>

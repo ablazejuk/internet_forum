@@ -27,4 +27,11 @@ class ThreadController extends Controller
         
         return redirect('home');
     }
+    
+    public function getView($id)
+    {
+        $thread = Thread::find($id);
+        
+        return view('threads/view', compact('thread'));
+    }
 }

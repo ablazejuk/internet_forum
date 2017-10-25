@@ -16,7 +16,7 @@
     <body class="skin-black {{ Route::currentRouteName() }}">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="{{ url('/') }}" class="logo">
+            <a href="{{ url(\Auth::check() ? 'home' : '/') }}" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 {{ config('app.name', 'Laravel') }}
             </a>
