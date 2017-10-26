@@ -40,12 +40,12 @@
                             </thead>
                             <tbody>
                                 @foreach($threads as $thread)
-                                <tr>
-                                    <td><a href="{{ url('threads/view/' . $thread->id) }}">{{ $thread->title }}</a></td>
-                                    <td>{{ $thread->user->name }}</td>
-                                    <td>Win 95+</td>
-                                    <td>Win 95+</td>
-                                </tr>
+                                    <tr>
+                                        <td><a href="{{ url('threads/view/' . $thread->id) }}">{{ $thread->title }}</a></td>
+                                        <td>{{ $thread->user->name }}</td>
+                                        <td>Win 95+</td>
+                                        <td>Win 95+</td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>

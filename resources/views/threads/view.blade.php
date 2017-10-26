@@ -19,25 +19,30 @@
                     <h3 class="box-title col-md-1"><i class="fa fa-comments-o"></i>Posts</h3>
                     <h3 class="text-center col-md-10">{{ $thread->title }}</h3>
                 </div>
+                
                 @if($thread->description)
-                <hr>
-                <p class="col-md-offset-1 col-md-10">{!! $thread->description !!}</p>
+                    <hr>
+                    <p class="col-md-offset-1 col-md-10">{!! $thread->description !!}</p>
                 @endif
             </div>
             <hr>
             <div class="box-body" id="chat-box">
-                <!-- chat item -->
-                <div class="row">
-                    <a href="#" class="name col-md-2 text-center">
-                        Mike Doe
-                    </a>
-                    <p class="message col-md-9">
-                        I would like to meet you to discuss the latest news about
-                        the arrival of the new theme. They say it is going to be one the
-                        best themes on the market
-                    </p>
-                    <small class="text-muted col-md-1 pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-                </div><!-- /.item -->
+                @foreach($thread->posts as $key => $post)
+                    @if($key)
+                        <hr>
+                    @endif
+                    <!-- chat item -->
+                    <div class="row">
+                        <a href="#" class="name col-md-2 text-center">
+                            {{ $post->user->name }}
+                        </a>
+                        <p class="message col-md-8"> 
+                            {!! $post->message !!}
+                        </p>
+                        <small class="text-muted col-md-1"><i class="fa fa-calendar-o"></i> {{ date('d/m/Y', strtotime($post->created_at)) }}</small>
+                        <small class="text-muted col-md-1"><i class="fa fa-clock-o"></i> {{ date('H:i:s', strtotime($post->created_at)) }}</small>
+                    </div><!-- /.item -->
+                @endforeach
             </div><!-- /.chat -->
             <div class="box-footer">
                 <form action="{{ url('posts/create') }}" method="POST">
@@ -45,15 +50,15 @@
 
                     <input type="hidden" name="thread_id" value="{{ $thread->id }}">
                     
-                    @if($errors->has('post'))
-                        <div class="col-md-offset-1 text-danger">{{ $errors->first('post') }}</div>
+                    @if($errors->has('message'))
+                        <div class="col-md-offset-1 text-danger">{{ $errors->first('message') }}</div>
                         <br>
                     @endif
                     
-                    <div class="form-group row {{ $errors->has('post') ? 'has-error' : '' }}">
+                    <div class="form-group row {{ $errors->has('message') ? 'has-error' : '' }}">
                         <div class="col-md-offset-1 col-md-9">
-                            <textarea class="textarea" name="post" id="description" placeholder="Post" 
-                                  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ old('post') }}</textarea>                      
+                            <textarea class="textarea" name="message" id="description" placeholder="Message" 
+                                  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ old('message') }}</textarea>                      
                         </div>
                         <div class="col-md-1" style="padding-top:120px">
                             <button class="btn btn-success">Post</button>

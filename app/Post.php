@@ -4,22 +4,22 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Thread extends Model
+class Post extends Model
 {
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'title', 'description'];
+    protected $fillable = ['user_id', 'thread_id', 'message'];
     
     public function user()
     {
         return $this->belongsTo('App\User');
     }
     
-    public function posts()
+    public function thread()
     {
-        return $this->hasMany('App\Post');
+        return $this->belongsTo('App\Thread');
     }
 }

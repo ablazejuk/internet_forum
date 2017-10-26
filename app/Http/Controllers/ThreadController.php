@@ -30,7 +30,7 @@ class ThreadController extends Controller
     
     public function getView($id)
     {
-        $thread = Thread::find($id);
+        $thread = Thread::with('posts.user')->find($id);
         
         return view('threads/view', compact('thread'));
     }
