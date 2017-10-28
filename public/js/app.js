@@ -13166,16 +13166,12 @@ $(window).load(function(){
     }
 })(window.jQuery || window.Zepto);
 $(document).ready(function() {
+    $(".textarea").wysihtml5();
+});
+$(document).ready(function() {
     if(!$('body').hasClass('home')) {
         return;
     }
     
     $('#threads-table').dataTable();
-});
-$(document).ready(function() {
-    if(!$('body').hasClass('threads')) {
-        return;
-    }
-    
-    $(".textarea").wysihtml5();
 });

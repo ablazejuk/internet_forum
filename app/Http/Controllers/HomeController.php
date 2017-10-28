@@ -24,7 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $threads = Thread::with('user')->get();
+        $threads = Thread::with(['user', 'posts' => function ($query) {
+            $query->orderBy('created_at');
+        }])->get();
         
         return view('home', compact('threads'));
     }

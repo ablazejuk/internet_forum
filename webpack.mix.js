@@ -31,8 +31,8 @@ mix.combine([
     'resources/assets/theme/adminlte/AdminLTE/js/plugins/datatables/dataTables.bootstrap.js',
     'resources/assets/theme/adminlte/AdminLTE/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js',
     'resources/assets/theme/adminlte/AdminLTE/js/AdminLTE/app.js',
+    'resources/assets/js/app.js',
     'resources/assets/js/home.js',
-    'resources/assets/js/threads.js'
 ], 'public/js/app.js');
 
 // Images
@@ -43,6 +43,4 @@ mix.copyDirectory('resources/assets/theme/adminlte/AdminLTE/css/datatables/image
 mix.copy('resources/assets/fonts/kaushanscript/v6/qx1LSqts-NtiKcLw4N03IEd0sm1ffa_JvZxsF_BEwQk.woff2', 'public/fonts/kaushanscript/v6/qx1LSqts-NtiKcLw4N03IEd0sm1ffa_JvZxsF_BEwQk.woff2');
 mix.copyDirectory('resources/assets/fonts/sourcesanspro/v11', 'public/fonts/sourcesanspro/v11');
 
-mix.js('resources/assets/js/app.js', 'public/js')
-    .sass('resources/assets/sass/app.scss', 'public/css')
-    .version();
+mix.version();

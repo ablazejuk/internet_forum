@@ -36,12 +36,35 @@
                         <a href="#" class="name col-md-2 text-center">
                             {{ $post->user->name }}
                         </a>
-                        <p class="message col-md-8"> 
+                        <div class="message col-md-8"> 
                             {!! $post->message !!}
-                        </p>
-                        <small class="text-muted col-md-1"><i class="fa fa-calendar-o"></i> {{ date('d/m/Y', strtotime($post->created_at)) }}</small>
-                        <small class="text-muted col-md-1"><i class="fa fa-clock-o"></i> {{ date('H:i:s', strtotime($post->created_at)) }}</small>
+                        </div>
+                        <div class="col-md-1 text-center">
+                            <div class="row">
+                                <small class="text-muted">
+                                    <i class="fa fa-calendar-o"></i> 
+                                    {{ date('d/m/Y', strtotime($post->created_at)) }}
+                                </small>
+                            </div>
+                            <div class="row">
+                                <small class="text-muted">
+                                    <i class="fa fa-clock-o"></i> 
+                                    {{ date('H:i:s', strtotime($post->created_at)) }}
+                                </small>
+                            </div>
+                        </div>
+                        @if($post->user->id === auth()->user()->id)
+                        <div class="col-md-1 tools text-center">
+                            <a href="{{ url('posts/edit/' . $post->id) }}" title="Edit"><i class="fa fa-edit fa-2x"></i></a>
+                            <a href="{{ url('posts/delete/' . $post->id) }}" title="Delete"><i class="fa fa-trash-o fa-2x"></i></a>
+                        </div>
+                        @endif
                     </div><!-- /.item -->
+                    @if($post->created_at != $post->updated_at)
+                    <small class="pull-right text-muted">
+                        Last edit at {{ date('d/m/Y - H:i:s', strtotime($post->updated_at)) }}
+                    </small>
+                    @endif
                 @endforeach
             </div><!-- /.chat -->
             <div class="box-footer">

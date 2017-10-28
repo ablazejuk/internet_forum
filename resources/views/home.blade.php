@@ -43,8 +43,8 @@
                                     <tr>
                                         <td><a href="{{ url('threads/view/' . $thread->id) }}">{{ $thread->title }}</a></td>
                                         <td>{{ $thread->user->name }}</td>
-                                        <td>Win 95+</td>
-                                        <td>Win 95+</td>
+                                        <td>{{ $thread->posts->count() }}</td>
+                                        <td>{{ $thread->posts->last() ? $thread->posts->last()->user->name . ' - ' . date('d/m/Y - H:i:s', strtotime($thread->posts->last()->created_at)) : '-' }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

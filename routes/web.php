@@ -21,10 +21,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('home', 'HomeController@index')->name('home');
     
     // Threads
-    Route::get('threads/create', 'ThreadController@getCreate')->name('threads');
+    Route::get('threads/create', 'ThreadController@getCreate');
     Route::post('threads/create', 'ThreadController@postCreate');
-    Route::get('threads/view/{id}', 'ThreadController@getView')->name('threads');
+    Route::get('threads/view/{id}', 'ThreadController@getView');
     
     // Posts
     Route::post('posts/create', 'PostController@postCreate');
+    Route::get('posts/edit/{id}', 'PostController@getEdit');
+    Route::post('posts/edit', 'PostController@postEdit');
+    Route::get('posts/delete/{id}', 'PostController@getDelete');
+    Route::post('posts/delete', 'PostController@postDelete');
 });
