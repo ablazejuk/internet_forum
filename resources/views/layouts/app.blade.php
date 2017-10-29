@@ -8,7 +8,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -35,9 +35,12 @@
                                 <i class="glyphicon glyphicon-user"></i>
                                 <span>{{ Auth::user()->name }}<i class="caret"></i></span>
                             </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="{{ route('logout') }}"
+                            <ul class="dropdown-menu">
+                                <li class="user-footer">
+                                    <a href="{{ url('settings') }}" class="btn btn-default btn-flat">
+                                        Settings
+                                    </a>
+                                    <a href="{{ route('logout') }}" class="btn btn-default btn-flat"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                         Logout
@@ -55,7 +58,19 @@
             </nav>
         </header>
         <div class="wrapper row-offcanvas row-offcanvas-left">
-            @yield('content')
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side strech">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        @yield('title')
+                    </h1>
+                </section>
+                
+                <section class="content">
+                    @yield('content')
+                </section>
+            </aside>
         </div>
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
