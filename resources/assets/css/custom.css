@@ -6,3 +6,22 @@
 .box .box-header a {
     color: #fff; 
 }
+
+.col-md-8 > .logo {
+  font-size: 100px;
+  line-height: 175px;
+  text-align: center;
+  padding: 0 10px;
+  font-family: 'Kaushan Script', cursive;
+  font-weight: 1000;
+  height: 200px;
+  display: block;
+}
+
+body > .header .full-navbar {
+    margin-left: 0;
+}
+
+html.bg-white, .content.bg-white {
+    background: #ffffff;
+}

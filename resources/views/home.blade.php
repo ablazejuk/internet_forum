@@ -13,7 +13,7 @@
                         <h3 class="box-title">Threads</h3>
                     </div>
                     <div class="col-md-6">
-                        <a href="{{ url('threads/create') }}" class="btn btn-primary btn-sm pull-right margin" role="button">
+                        <a href="{{ url('threads/create') }}" title="Create New Thread" class="btn btn-primary btn-sm pull-right margin" role="button">
                             Create New Thread
                         </a>
                     </div>

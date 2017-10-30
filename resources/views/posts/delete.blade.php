@@ -8,7 +8,7 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Delete Post on Thread {{ $post->thread->title }} (last update at {{ date('d/m/Y - H:i:s', strtotime($post->updated_at)) }})</h3>
+                <h3 class="box-title">Delete Post on Thread {{ $post->thread->title }}</h3>
             </div><!-- /.box-header -->
             <form action="{{ url('posts/delete') }}" method="POST">
                 {{ csrf_field() }}
@@ -41,8 +41,8 @@
                     </div>
                     @if($post->created_at != $post->updated_at)
                     <div class="row">
-                        <div class="col-md-11">
-                            <small class="pull-right text-muted">
+                        <div class="col-md-offset-9 col-md-3 text-center">
+                            <small class="text-muted">
                                 Last edit at {{ date('d/m/Y - H:i:s', strtotime($post->updated_at)) }}
                             </small>
                         </div>
@@ -50,8 +50,8 @@
                     @endif
                 </div>
                 <div class="box-footer text-center">
-                    <a href="{{ url('threads/view/' . $post->thread->id) }}" class="btn btn-default margin" role="button">Return</a>
-                    <button type="submit" class="btn btn-primary margin">Delete</button>
+                    <a href="{{ url('threads/view/' . $post->thread->id) }}" title="Return" class="btn btn-default margin" role="button">Return</a>
+                    <button title="Delete" type="submit" class="btn btn-danger margin">Delete</button>
                 </div>
             </form>
         </div><!-- /.box -->
