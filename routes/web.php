@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SearchController@getIndex');
+Route::get('search', 'SearchController@getSearch');
+Route::get('threads/view/{id}', 'ThreadController@getView');
 
 Auth::routes();
 
@@ -27,7 +27,6 @@ Route::group(['middleware' => 'auth'], function () {
     // Threads
     Route::get('threads/create', 'ThreadController@getCreate');
     Route::post('threads/create', 'ThreadController@postCreate');
-    Route::get('threads/view/{id}', 'ThreadController@getView');
     Route::get('threads/edit/{id}', 'ThreadController@getEdit');
     Route::post('threads/edit', 'ThreadController@postEdit');
     Route::get('threads/delete/{id}', 'ThreadController@getDelete');

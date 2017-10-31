@@ -58,7 +58,7 @@
                 <section class="content bg-white">
                     <div class="row" style="padding-top:125px">
                         <div class="col-xs-12">
-                                <form action="{{ url('search') }}" method="POST">
+                                <form action="{{ url('search') }}" method="GET">
                                     {{ csrf_field() }}
 
                                     <div class="box-body">
@@ -76,13 +76,18 @@
                                         <div class="row">
                                             <div class="col-md-offset-3 col-md-6">
                                                 <div class="input-group input-group-sm">
-                                                    <input type="text" placeholder="Search term" class="form-control">
+                                                    <input name="term" type="text" placeholder="Search term" maxlength="255" class="form-control">
                                                     <span class="input-group-btn">
-                                                        <button class="btn btn-primary btn-flat" type="button">
+                                                        <button class="btn btn-primary btn-flat" type="submit">
                                                             <i class="fa fa-search fa-lg"></i>
                                                         </button>
                                                     </span>
                                                 </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                @if($errors->has('term'))
+                                                    <div class="text-danger">{{ $errors->first('term') }}</div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
