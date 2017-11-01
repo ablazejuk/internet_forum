@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Threads')
 
 @section('content')
 
@@ -10,7 +10,7 @@
             <div class="box-header">
                 <div class="row">
                     <div class="col-md-6">
-                        <h3 class="box-title">Threads</h3>
+                        <h3 class="box-title">Threads List</h3>
                     </div>
                     <div class="col-md-6">
                         <a href="{{ url('threads/create') }}" title="Create New Thread" class="btn btn-primary btn-sm pull-right margin" role="button">

@@ -16,12 +16,21 @@
     <body class="skin-black {{ Route::currentRouteName() }}">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="{{ url(\Auth::check() ? 'home' : '/') }}" class="logo">
+            <a href="{{ url('/') }}" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 {{ config('app.name', 'Laravel') }}
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
+                <div class="navbar-left">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="{{ url('threads') }}">
+                                <span>Threads</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
                         <!-- Authentication Links -->

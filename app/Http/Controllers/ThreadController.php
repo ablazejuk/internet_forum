@@ -9,6 +9,15 @@ use DB;
 
 class ThreadController extends Controller
 {
+    public function getIndex()
+    {
+        $threads = Thread::with(['user', 'posts' => function ($query) {
+            $query->orderBy('created_at');
+        }])->get();
+        
+        return view('threads/list', compact('threads'));
+    }
+    
     public function getCreate()
     {
         return view('threads/create');

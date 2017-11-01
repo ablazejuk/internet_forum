@@ -22,6 +22,6 @@ body > .header .full-navbar {
     margin-left: 0;
 }
 
-html.bg-white, .content.bg-white {
+.wrapper.bg-white, .content.bg-white {
     background: #ffffff;
 }

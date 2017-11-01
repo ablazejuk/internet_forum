@@ -104,7 +104,7 @@
                 </div>
             </div>
             <div class="row text-center">
-                <a href="{{ url('home') }}" title="Return" class="btn btn-default margin" role="button">Return</a>
+                <a href="{{ url('threads') }}" title="Cancel" class="btn btn-default margin" role="button">Cancel</a>
                 <button type="submit" title="Post" class="btn btn-primary margin">Post</button>
             </div>
         </form>

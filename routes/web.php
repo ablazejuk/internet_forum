@@ -18,7 +18,7 @@ Route::get('threads/view/{id}', 'ThreadController@getView');
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('home', 'HomeController@index')->name('home');
+    Route::get('threads', 'ThreadController@getIndex')->name('threads');
     
     // Settings
     Route::get('settings', 'SettingsController@getIndex');

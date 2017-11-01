@@ -1,10 +1,13 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}" class="bg-white">
+<html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -17,6 +20,15 @@
         <header class="header">
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar full-navbar navbar-static-top" role="navigation">
+                <div class="navbar-left">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="{{ url('threads') }}">
+                                <span>Threads</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
                         <!-- Authentication Links -->
@@ -52,51 +64,52 @@
                 </div>
             </nav>
         </header>
-        <div class="wrapper row-offcanvas row-offcanvas-left">
+        <div class="wrapper row-offcanvas row-offcanvas-left bg-white">
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side strech">
                 <section class="content bg-white">
                     <div class="row" style="padding-top:125px">
                         <div class="col-xs-12">
-                                <form action="{{ url('search') }}" method="GET">
-                                    {{ csrf_field() }}
+                            <form action="{{ url('search') }}" method="GET">
+                                {{ csrf_field() }}
 
-                                    <div class="box-body">
-                                        <div class="row">
-                                            <div class="col-md-offset-2 col-md-8">
-                                                <span class="logo">
-                                                    <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                                                    {{ config('app.name', 'Laravel') }}
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-md-offset-2 col-md-8">
+                                            <span class="logo">
+                                                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                                                {{ config('app.name', 'Laravel') }}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-6">
+                                            <div class="input-group input-group-sm">
+                                                <input name="term" type="text" placeholder="Search term" maxlength="255" class="form-control">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-primary btn-flat" type="submit">
+                                                        <i class="fa fa-search fa-lg"></i>
+                                                    </button>
                                                 </span>
                                             </div>
                                         </div>
-                                        
-                                        <br>
-                                        
-                                        <div class="row">
-                                            <div class="col-md-offset-3 col-md-6">
-                                                <div class="input-group input-group-sm">
-                                                    <input name="term" type="text" placeholder="Search term" maxlength="255" class="form-control">
-                                                    <span class="input-group-btn">
-                                                        <button class="btn btn-primary btn-flat" type="submit">
-                                                            <i class="fa fa-search fa-lg"></i>
-                                                        </button>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                @if($errors->has('term'))
-                                                    <div class="text-danger">{{ $errors->first('term') }}</div>
-                                                @endif
-                                            </div>
+                                        <div class="col-md-3">
+                                            @if($errors->has('term'))
+                                                <div class="text-danger">{{ $errors->first('term') }}</div>
+                                            @endif
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </section>
             </aside>
         </div>
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

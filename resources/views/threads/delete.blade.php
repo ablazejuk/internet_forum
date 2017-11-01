@@ -47,7 +47,7 @@
                     @endif
                 </div>
                 <div class="box-footer text-center">
-                    <a href="{{ url('threads/view/' . $thread->id) }}"  title="Return" class="btn btn-default margin" role="button">Return</a>
+                    <a href="{{ url('threads/view/' . $thread->id) }}"  title="Cancel" class="btn btn-default margin" role="button">Cancel</a>
                     <button  title="Delete" type="submit" class="btn btn-danger margin">Delete</button>
                 </div>
             </form>

@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="box-footer text-center">
-                    <a href="{{ url('home') }}" class="btn btn-default margin" role="button">Return</a>
+                    <a href="{{ url('threads') }}" class="btn btn-default margin" role="button">Cancel</a>
                     <button type="submit" class="btn btn-primary margin">Create</button>
                 </div>
             </form>

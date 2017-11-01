@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="box-footer text-center">
-                    <a href="{{ url('threads/view/' . $thread->id) }}" title="Return" class="btn btn-default margin" role="button">Return</a>
+                    <a href="{{ url('threads/view/' . $thread->id) }}" title="Cancel" class="btn btn-default margin" role="button">Cancel</a>
                     <button type="submit" title="Edit" class="btn btn-primary margin">Edit</button>
                 </div>
             </form>

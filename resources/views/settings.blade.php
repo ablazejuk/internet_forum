@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="box-footer text-center">
-                    <a href="{{ url('home') }}" title="Cancel" class="btn btn-default margin" role="button">Cancel</a>
+                    <a href="{{ url('/') }}" title="Cancel" class="btn btn-default margin" role="button">Cancel</a>
                     <button type="submit" title="Apply Changes" class="btn btn-primary margin">Apply Changes</button>
                 </div>
             </form>

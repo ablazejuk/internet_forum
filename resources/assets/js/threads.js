@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    if(!$('body').hasClass('home')) {
+    if(!$('body').hasClass('threads')) {
         return;
     }
     
