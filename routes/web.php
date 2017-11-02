@@ -14,11 +14,15 @@
 Route::get('/', 'SearchController@getIndex');
 Route::get('search', 'SearchController@getSearch');
 Route::get('threads/view/{id}', 'ThreadController@getView');
+Route::get('threads', 'ThreadController@getIndex')->name('threads');
 
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('threads', 'ThreadController@getIndex')->name('threads');
+    // Accounts
+    Route::get('accounts', 'AccountController@getIndex');
+    Route::get('accounts/create', 'AccountController@getCreate');
+    Route::post('accounts/create', 'AccountController@postCreate');
     
     // Settings
     Route::get('settings', 'SettingsController@getIndex');

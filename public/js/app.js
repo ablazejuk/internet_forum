@@ -13174,11 +13174,6 @@ $(document).ready(function() {
         "link": false, 
         "image": false
     });
-});
-$(document).ready(function() {
-    if(!$('body').hasClass('threads')) {
-        return;
-    }
     
-    $('#threads-table').dataTable();
+    $('.table').dataTable();
 });

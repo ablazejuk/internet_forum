@@ -12,15 +12,17 @@
                     <div class="col-md-6">
                         <h3 class="box-title">Threads List</h3>
                     </div>
+                    @if(Auth::check())
                     <div class="col-md-6">
                         <a href="{{ url('threads/create') }}" title="Create New Thread" class="btn btn-primary btn-sm pull-right margin" role="button">
                             Create New Thread
                         </a>
                     </div>
+                    @endif
                 </div>
             </div><!-- /.box-header -->
             <div class="box-body table-responsive">
-                <table id="threads-table" class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Title</th>

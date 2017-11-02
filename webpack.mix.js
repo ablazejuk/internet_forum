@@ -32,7 +32,6 @@ mix.combine([
     'resources/assets/theme/adminlte/AdminLTE/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js',
     'resources/assets/theme/adminlte/AdminLTE/js/AdminLTE/app.js',
     'resources/assets/js/app.js',
-    'resources/assets/js/threads.js',
 ], 'public/js/app.js');
 
 // Images

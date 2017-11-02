@@ -7,4 +7,6 @@ $(document).ready(function() {
         "link": false, 
         "image": false
     });
+    
+    $('.table').dataTable();
 });

@@ -47,9 +47,9 @@
             @endif
             <!-- chat item -->
             <div class="row">
-                <a href="#" class="name col-md-2 text-center">
+                <div class="name col-md-2 text-center">
                     {{ $post->user->name }}
-                </a>
+                </div>
                 <div class="message col-md-8"> 
                     {!! $post->message !!}
                 </div>

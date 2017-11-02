@@ -24,6 +24,13 @@
             <nav class="navbar navbar-static-top" role="navigation">
                 <div class="navbar-left">
                     <ul class="nav navbar-nav">
+                        @if(Auth::check() && Auth::user()->type == 'admin')
+                        <li>
+                            <a href="{{ url('accounts') }}">
+                                <span>Accounts</span>
+                            </a>
+                        </li>
+                        @endif
                         <li>
                             <a href="{{ url('threads') }}">
                                 <span>Threads</span>

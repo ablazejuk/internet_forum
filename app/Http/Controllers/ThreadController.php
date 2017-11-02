@@ -36,7 +36,7 @@ class ThreadController extends Controller
         $thread->user_id = $request->user()->id;
         $thread->save();
         
-        return redirect('home');
+        return redirect('threads');
     }
     
     public function getView($id)
@@ -91,6 +91,6 @@ class ThreadController extends Controller
         
         DB::commit();
         
-        return redirect('home');
+        return redirect('threads');
     }
 }
