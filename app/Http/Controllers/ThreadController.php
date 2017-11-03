@@ -84,12 +84,7 @@ class ThreadController extends Controller
         
         $thread = Thread::find($validatedData['thread_id']);
         
-        DB::beginTransaction();
-        
-        Post::where('thread_id', $thread->id)->delete();
         Thread::where('id', $thread->id)->delete();
-        
-        DB::commit();
         
         return redirect('threads');
     }

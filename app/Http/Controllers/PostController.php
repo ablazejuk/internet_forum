@@ -45,9 +45,13 @@ class PostController extends Controller
         return redirect('threads/view/' . $post->thread->id);
     }
     
-    public function getDelete($id)
+    public function getDelete(Request $request, $id)
     {
         $post = Post::with('thread')->find($id);
+        
+        if(!$post || $request->user()->type != 'admin' && $post->user_id != $request->user()->id) {
+            abort(404);
+        }
         
         return view('posts/delete', compact('post'));
     }
@@ -57,8 +61,13 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'post_id' => 'required'
         ]);
-        
+     
         $post = Post::find($validatedData['post_id']);
+        
+        if(!$post || $request->user()->type != 'admin' && $post->user_id != $request->user()->id) {
+            abort(404);
+        }
+        
         Post::where('id', $post->id)->delete();
         
         return redirect('threads/view/' . $post->thread->id);

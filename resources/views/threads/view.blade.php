@@ -9,14 +9,18 @@
         <div class="row">
             <h3 class="box-title col-md-2"><i class="fa fa-comments-o"></i>Posts</h3>
             <h2 class="text-center col-md-8">{{ $thread->title }}</h2>
-            @if(\Auth::check() && $thread->user->id === auth()->user()->id)
+            @if(\Auth::check())
             <div class="col-md-2 text-right">
+                @if($thread->user->id === auth()->user()->id)
                 <a href="{{ url('threads/edit/' . $thread->id) }}" title="Edit" class="btn btn-primary btn-sm margin" role="button">
                     Edit
                 </a>
+                @endif
+                @if(auth()->user()->type == 'admin' || $thread->user->id === auth()->user()->id)
                 <a href="{{ url('threads/delete/' . $thread->id) }}" title="Delete"  class="btn btn-danger btn-sm margin" role="button">
                     Delete
                 </a>
+                @endif
             </div>
             @endif
         </div>
@@ -67,10 +71,14 @@
                         </small>
                     </div>
                 </div>
-                @if(\Auth::check() && $post->user->id === auth()->user()->id)
+                @if(\Auth::check())
                 <div class="col-md-1 tools text-center">
+                    @if($post->user->id === auth()->user()->id)
                     <a href="{{ url('posts/edit/' . $post->id) }}" title="Edit" style="vertical-align:middle"><i class="fa fa-edit fa-2x"></i></a>
+                    @endif
+                    @if(auth()->user()->type == 'admin' || $post->user->id === auth()->user()->id)
                     <a href="{{ url('posts/delete/' . $post->id) }}" title="Delete"><i class="fa fa-trash-o fa-2x"></i></a>
+                    @endif
                 </div>
                 @endif
             </div><!-- /.item -->

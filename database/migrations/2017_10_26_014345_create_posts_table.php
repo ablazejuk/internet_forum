@@ -17,10 +17,10 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
             $table->integer('thread_id')->unsigned();
-            $table->foreign('thread_id')->references('id')->on('threads');
+            $table->foreign('thread_id')->references('id')->on('threads')->onDelete('cascade');
             
             $table->longText('message');
             
