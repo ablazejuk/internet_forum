@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Thread;
 
 class PostController extends Controller
 {
@@ -14,6 +15,12 @@ class PostController extends Controller
             'thread_id' => 'required'
         ]);
         
+        $thread = Thread::find($validatedData['thread_id']);
+        
+        if(!$thread) {
+            abort(404);
+        }
+        
         $post = new Post;
         
         $post->fill($validatedData);
@@ -23,9 +30,13 @@ class PostController extends Controller
         return redirect('threads/view/' . $validatedData['thread_id']);
     }
     
-    public function getEdit($id)
+    public function getEdit(Request $request, $id)
     {
-        $post = Post::with('thread')->find($id);
+        $post = Post::with('thread', 'user')->find($id);
+        
+        if(!$post || $post->user_id != $request->user()->id) {
+            abort(404);
+        }
         
         return view('posts/edit', compact('post'));
     }
@@ -39,6 +50,10 @@ class PostController extends Controller
         
         $post = Post::find($validatedData['post_id']);
         
+        if(!$post || $post->user_id != $request->user()->id) {
+            abort(404);
+        }
+        
         $post->fill($validatedData);
         $post->save();
         
@@ -47,7 +62,7 @@ class PostController extends Controller
     
     public function getDelete(Request $request, $id)
     {
-        $post = Post::with('thread')->find($id);
+        $post = Post::with('thread', 'user')->find($id);
         
         if(!$post || $request->user()->type != 'admin' && $post->user_id != $request->user()->id) {
             abort(404);

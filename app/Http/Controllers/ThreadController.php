@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
 use App\Thread;
-use DB;
+use App\Rules\ThreadTitleUnique;
 
 class ThreadController extends Controller
 {
@@ -46,22 +45,30 @@ class ThreadController extends Controller
         return view('threads/view', compact('thread'));
     }
     
-    public function getEdit($id)
+    public function getEdit(Request $request, $id)
     {
         $thread = Thread::find($id);
+        
+        if(!$thread || $thread->user_id != $request->user()->id) {
+            abort(404);
+        }
         
         return view('threads/edit', compact('thread'));
     }
     
     public function postEdit(Request $request)
     {
-        $thread = Thread::find($request->get('thread_id'));
-        
         $validatedData = $request->validate([
             'thread_id' => 'required',
-            'title' => 'required|max:100' . ($thread && $thread->title !== $request->get('title') ? '|unique:threads' : ''),
+            'title' => ['required', 'max:100', new ThreadTitleUnique($request->get('thread_id'))],
             'description' => ''
         ]);
+        
+        $thread = Thread::find($validatedData['thread_id']);
+        
+        if(!$thread || $thread->user_id != $request->user()->id) {
+            abort(404);
+        }
         
         $thread->fill($validatedData);
         $thread->save();
@@ -69,9 +76,13 @@ class ThreadController extends Controller
         return redirect('threads/view/' . $thread->id);
     }
     
-    public function getDelete($id)
+    public function getDelete(Request $request, $id)
     {
         $thread = Thread::find($id);
+        
+        if(!$thread || $request->user()->type != 'admin' && $thread->user_id != $request->user()->id) {
+            abort(404);
+        }
         
         return view('threads/delete', compact('thread'));
     }
@@ -83,6 +94,10 @@ class ThreadController extends Controller
         ]);
         
         $thread = Thread::find($validatedData['thread_id']);
+        
+        if(!$thread || $request->user()->type != 'admin' && $thread->user_id != $request->user()->id) {
+            abort(404);
+        }
         
         Thread::where('id', $thread->id)->delete();
         

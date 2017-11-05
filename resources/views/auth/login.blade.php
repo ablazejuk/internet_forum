@@ -55,9 +55,6 @@
                         <button type="submit" title="Sign me in" class="btn btn-primary margin">Sign me in</button>  
                     </div>
                     <div class="row">
-                        <a href="#" title="Recover Password">I forgot my password</a>
-                    </div>
-                    <div class="row">
                         <a href="{{ url('register') }}" title="Register" class="text-center">Register a new membership</a>
                     </div>
                 </div>

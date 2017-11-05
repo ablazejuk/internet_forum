@@ -19,14 +19,16 @@ Route::get('threads', 'ThreadController@getIndex')->name('threads');
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    // Accounts
-    Route::get('accounts', 'AccountController@getIndex');
-    Route::get('accounts/create', 'AccountController@getCreate');
-    Route::post('accounts/create', 'AccountController@postCreate');
-    Route::get('accounts/edit/{id}', 'AccountController@getEdit');
-    Route::post('accounts/edit', 'AccountController@postEdit');
-    Route::get('accounts/delete/{id}', 'AccountController@getDelete');
-    Route::post('accounts/delete', 'AccountController@postDelete');
+    Route::group(['middleware' => 'admin'], function () {
+        // Accounts
+        Route::get('accounts', 'AccountController@getIndex');
+        Route::get('accounts/create', 'AccountController@getCreate');
+        Route::post('accounts/create', 'AccountController@postCreate');
+        Route::get('accounts/edit/{id}', 'AccountController@getEdit');
+        Route::post('accounts/edit', 'AccountController@postEdit');
+        Route::get('accounts/delete/{id}', 'AccountController@getDelete');
+        Route::post('accounts/delete', 'AccountController@postDelete');
+    });
     
     // Settings
     Route::get('settings', 'SettingsController@getIndex');

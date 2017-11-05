@@ -21,7 +21,10 @@
                     <hr>
 
                     <div class="row">
-                        <div class="message col-md-offset-2 col-md-8">
+                        <div class="name col-md-2 text-center">
+                            {{ $post->user->name }}
+                        </div>
+                        <div class="message col-md-8">
                             {!! $post->message !!}                                
                         </div>
                         <div class="col-md-1 text-center">

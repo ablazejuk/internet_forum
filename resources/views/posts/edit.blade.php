@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <small class="pull-left text-muted">
-                                Created at {{ date('d/m/Y - H:i:s', strtotime($post->created_at)) }}
+                                Created by {{ $post->user->name }} at {{ date('d/m/Y - H:i:s', strtotime($post->created_at)) }}
                             </small>
                         </div>
                         @if($post->created_at != $post->updated_at)

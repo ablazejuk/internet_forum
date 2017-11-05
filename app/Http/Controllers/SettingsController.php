@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Rules\EmailUnique;
 
 class SettingsController extends Controller
 {
@@ -15,7 +16,7 @@ class SettingsController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255' . ($request->user()->email !== $request->get('email') ? '|unique:users' : ''),
+            'email' => ['required', 'string', 'email', 'max:255', new EmailUnique($request->user()->email)],
             'current_password' => 'required|string|min:6',
             'new_password' => 'nullable|string|min:6|confirmed',
         ]);
