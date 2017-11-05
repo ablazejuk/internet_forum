@@ -36,6 +36,7 @@ mix.combine([
 
 // Images
 mix.copy('resources/assets/theme/adminlte/AdminLTE/css/iCheck/minimal/minimal.png', 'public/css/iCheck/minimal/minimal.png');
+mix.copy('resources/assets/img/favicon.ico', 'public/images/favicon.ico');
 mix.copyDirectory('resources/assets/theme/adminlte/AdminLTE/css/datatables/images', 'public/css/images');
 
 //Fonts

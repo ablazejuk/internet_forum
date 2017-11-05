@@ -14,6 +14,9 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        
+        <!-- Icon -->
+        <link rel="shortcut icon" href="{{ url('images/favicon.ico') }}">
     </head>
     <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
