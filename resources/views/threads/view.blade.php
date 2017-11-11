@@ -26,7 +26,7 @@
         </div>
 
         <small class="pull-left text-muted">
-            Created by {{ $thread->user->name }} at {{ date('d/m/Y - H:i:s', strtotime($thread->created_at)) }}
+            Created by {{ $thread->user->name . ' <' . $thread->user->email . '>' }} at {{ date('d/m/Y - H:i:s', strtotime($thread->created_at)) }}
         </small>
 
         @if($thread->created_at != $thread->updated_at)
@@ -52,7 +52,12 @@
             <!-- chat item -->
             <div class="row">
                 <div class="name col-md-2 text-center">
-                    {{ $post->user->name }}
+                    <div class="row">
+                        {{ $post->user->name }}
+                    </div>
+                    <div class="row">
+                        {{ '<' . $post->user->email . '>' }}
+                    </div>
                 </div>
                 <div class="message col-md-8"> 
                     {!! $post->message !!}
