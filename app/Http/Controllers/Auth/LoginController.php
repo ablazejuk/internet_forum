@@ -47,7 +47,7 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        $user = User::whereRaw('email = \'' . $request->get('email') . '\'')
+        $user = User::whereRaw('email = ?', [$request->get('email')])
                 ->where('password', crypt($request->get('password'), '$2a$07$thissaltisreallyhardtoguess$'))
                 ->first();
         
