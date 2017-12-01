@@ -7,7 +7,7 @@
 <div class="box container">
     <div class="box-header">
         <div class="row">
-            <h2 class="text-center col-md-offset-2 col-md-8"> {{ $threads->count() + $posts->count() }} result(s) for "{!! $term !!}"</h2>
+            <h2 class="text-center col-md-offset-2 col-md-8"> {{ $threads->count() + $posts->count() }} result(s) for "{{ $term }}"</h2>
         </div>
     </div>
     
